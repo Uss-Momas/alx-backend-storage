@@ -3,5 +3,5 @@
 CREATE TRIGGER decreate_item_quantity 
 AFTER INSERT ON orders FOR EACH ROW
 BEGIN
-	UPDATE items SET quantity = quantity - NEW.number Where name like NEW.item_name;
+	UPDATE items SET quantity = quantity - NEW.number Where NAME like NEW.item_name;
 END;
