@@ -4,8 +4,8 @@ DELIMITER $$;
 CREATE PROCEDURE ComputeAverageWeightedScoreForUser(IN user_id INT)
 BEGIN
     SET @average_score = (
-        SELECT SUM((score * weight)) / SUM(weight) AS weighted_avg_score 
-        FROM holberton.corrections
+        SELECT SUM((corrections.score * projects.weight)) / SUM(projects.weight) AS weighted_avg_score 
+        FROM corrections
         Join projects
         ON projects.id = corrections.project_id
         where corrections.user_id = user_id
