@@ -37,19 +37,20 @@ def call_history(method: Callable) -> Callable:
     return wrapper_fun
 
 
-def replay(fn_name):
+def replay(fn_name: Callable) -> None:
     """function to display the history of calls of a particular function.
     """
     r = redis.Redis()
-    inputs = r.lrange("{}:inputs".format(fn_name.__qualname__), 0, -1)
-    outputs = r.lrange("{}:outputs".format(fn_name.__qualname__), 0, -1)
-    print("{} was called {} times".format(fn_name.__qualname__, len(inputs)))
+    name = fn_name.__qualname__
+    inputs = r.lrange("{}:inputs".format(name), 0, -1)
+    outputs = r.lrange("{}:outputs".format(name), 0, -1)
+    print("{} was called {} times".format(name, r.get(name).decode("utf-8")))
     # List of tuples is generated
     # [((input_val), output_key)...]
     inputs_outputs = list(zip(inputs, outputs))
     for input_val, output_key in inputs_outputs:
         print("{}(*{}) -> {}".format(
-            fn_name.__qualname__,
+            name,
             input_val.decode("utf-8"),
             output_key.decode("utf-8")))
 
