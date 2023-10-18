@@ -4,7 +4,7 @@ Writing strings to Redis
 """
 
 import redis
-from typing import Union, Callable, Optional
+from typing import Union, Callable, Optional, Any
 import uuid
 
 
@@ -24,7 +24,7 @@ class Cache:
         return key
 
     def get(self, key: str,
-            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
+            fn: Optional[Callable] = None) -> Any:
         """
         retrives a data associated with key from redis db
         """
