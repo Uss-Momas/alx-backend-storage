@@ -5,12 +5,8 @@ import redis
 
 dotenv.load_dotenv()
 
-r = redis.Redis(
-  host=getenv('REDIS_HOST'),
-  port=getenv('REDIS_PORT'),
-  password=getenv('REDIS_PW'),
-#   ssl=True
-)
+r = redis.Redis()
+r.ping()
 
 r.set('foo', 'bar')
 print(r.get('foo'))
