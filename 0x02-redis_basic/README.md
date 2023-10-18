@@ -1,5 +1,10 @@
 # REDIS Basic
 
+Redis is a open source, in-memory data structure store which can be used as a database and/or a cache and message broker.
+* It fits in a NoSQL type of key/values
+* Supports multiple data structures
+* has built-in replication
+
 ## Resources
 
 1. [Redis commands](https://redis.io/commands/)
