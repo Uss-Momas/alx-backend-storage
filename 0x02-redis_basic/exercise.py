@@ -49,7 +49,9 @@ def replay(fn_name):
     inputs_outputs = list(zip(inputs, outputs))
     for input_val, output_key in inputs_outputs:
         print("{}(*{}) -> {}".format(
-            fn_name.__qualname__, input_val.decode("utf-8"), output_key.decode("utf-8")))
+            fn_name.__qualname__,
+            input_val.decode("utf-8"),
+            output_key.decode("utf-8")))
 
 
 class Cache:
