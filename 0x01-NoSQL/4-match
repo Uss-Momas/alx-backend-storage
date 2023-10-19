@@ -1,1 +1,2 @@
-// my comment
+// script that lists documents filtered by name in a collection
+db.school.find({name: "Holberton school"})
