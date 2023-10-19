@@ -44,7 +44,7 @@ def replay(fn_name: Callable) -> None:
     name = fn_name.__qualname__
     inputs = r.lrange("{}:inputs".format(name), 0, -1)
     outputs = r.lrange("{}:outputs".format(name), 0, -1)
-    print("{} was called {} times".format(name, r.get(name).decode("utf-8")))
+    print("{} was called {} times:".format(name, r.get(name).decode("utf-8")))
 
     for i_val, o_key in zip(inputs, outputs):
         print("{}(*{}) -> {}".format(
@@ -52,6 +52,9 @@ def replay(fn_name: Callable) -> None:
 
 
 class Cache:
+    """Cache class where we define methods to be used to store and retrieve
+    data from redis database
+    """
     def __init__(self) -> None:
         """consructor of the Cache class"""
         self._redis = redis.Redis()
