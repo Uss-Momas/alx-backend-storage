@@ -1,2 +1,2 @@
 // script to delete documents found by a filter
-db.school.remove({name: "Holberton school"})
+db.school.deleteMany({name: "Holberton school"})
